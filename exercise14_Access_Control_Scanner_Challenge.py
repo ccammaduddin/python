@@ -30,14 +30,12 @@ while True:
         print("ACCESS GRANTED")
 
 print("\nAccess Summary:")
-approved.sort()
 print("✅ Approved Visitors:")
-for visitor in approved:
+for visitor in sorted(approved): 
     print(f"- {visitor}")
 
-denied.sort()
 print("⛔️ Denied Visitors:")
-for visitor in denied:
+for visitor in sorted(denied):
     print(f"- {visitor}")
 
 access_summary = len(approved) + len(denied)
