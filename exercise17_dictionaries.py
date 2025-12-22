@@ -9,17 +9,13 @@
 #Ver 1.5 print inventory before and after purchases as one department_store of stuff(combine inventories from all stores into one...pretend Big Biz bought all the local stores, and want constant reporting for inventory management...)
 # as in all games there is a special way to do this that actually makes money and solves the problem...can you find 'them'? Do you know why? May require knowledge of actual python 'lore'
 
-#create stores
 freelancers = {'name':'freelancing Shop','brian': 70, 'black knight':20, 'biccus diccus':100, 'grim reaper':500, 'minstrel':-15}
 antiques = {'name':'Antique Shop','french castle':400, 'wooden grail':3, 'scythe':150, 'catapult':75, 'german joke':5}
 pet_shop = {'name':'Pet Shop','blue parrot':10, 'white rabbit':5, 'newt': 2}
 
-#create an dempty shopping cart
 cart = {}
-#loop through stores/dicts
-for LOOP OVER THE SHOPS :
-    #inputbox  to show what you can buy...capture textstring of what was bought...make lowercase
-    buy_item = input(f'Welcome to {SHOPNAME}! what do you want to buy: {LIST ITEMS FOR SALE})
-    #update the cart
-    cart.update({insert KEYVAL:VALUE}) # use pop...
-print(f'You Purchased {ITEMS PUCHASED} Today it is all free. Have a nice day of mayhem!')
+for shops in (freelancers,antiques,pet_shop):
+    buy_item = input(f'Welcome to {shops["name"]}! what do you want to buy: {", ".join([item for item in shops if item != "name"])}').lower()
+    cart.update({buy_item: shops.pop(buy_item)})
+    buy_items = ", ".join(list(cart.keys()))
+print(f"You bought: {buy_items}")
